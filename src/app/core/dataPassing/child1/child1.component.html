@@ -1,0 +1,13 @@
+<p>Hi there, My name is {{this.name}} </p>
+<br/>
+Address
+<p>
+    No {{this.address.no}},
+     {{this.address.lane}},
+     {{this.address.city}},
+     {{this.address.zip}}
+</p>
+<p>Skills</p>
+<ul>
+    <li *ngFor="let item of skills;">{{item}}</li>
+</ul>

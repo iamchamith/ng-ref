@@ -1,0 +1,5 @@
+<p>{{pageTitle}}</p>
+<app-child1 [name]='name' [address]="address" [skills]="skills"></app-child1>
+<hr />
+<p>Change info</p>
+<app-child2 (onChild2TextChanged)="onChild2TextChangedHandler($event)"></app-child2>

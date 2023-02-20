@@ -1,0 +1,7 @@
+<label>Change page titile</label> &nbsp; &nbsp;
+<input type="text" [(ngModel)]="pageTitle" (change)="textChange()" />
+<br />
+<label>Name</label> &nbsp; &nbsp;
+<input type="text" [(ngModel)]="personName" (change)="textChange()" />
+<br />
+<b>you typed {{this.pageTitle}} and {{this.personName}}</b>

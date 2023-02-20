@@ -1,0 +1,129 @@
+<div class="container" [formGroup]="userForm">
+    <br /><br />
+    <main>
+        <div class="row g-5">
+            <div class="col-md-7 col-lg-8">
+                <h4 class="mb-3">User registration form</h4>
+                <form class="needs-validation" novalidate>
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <label for="firstName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required
+                                formControlName="name">
+                            <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert alert-danger">
+
+                                <div *ngIf="name?.errors?.['required']">
+                                    Name is required.
+                                </div>
+                                <div *ngIf="name?.errors?.['minlength']">
+                                    Name must be at least 4 characters long.
+                                </div>
+                                <div *ngIf="name?.errors?.['forbiddenName']">
+                                    Name cannot be Bob.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="my-3">
+                            <label for="firstName" class="form-label">Gender</label><br />
+                            <div class="form-check form-check-inline">
+                                <input id="credit" value="1" type="radio" class="form-check-input"
+                                    formControlName="gender" />
+                                <label class="form-check-label" for="credit">Male</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input id="debit" value="2" type="radio" class="form-check-input"
+                                    formControlName="gender" />
+                                <label class="form-check-label" for="debit">Female</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label for="email" class="form-label">Date of birth </label>
+                            <input type="date" class="form-control" formControlName="birthDay" required />
+                        </div>
+                        <div class="col-12">
+                            <label for="email" class="form-label">Email </label>
+                            <input type="email" class="form-control" formControlName="email" required />
+                        </div>
+
+                        <div class="col-12">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" class="form-control" formControlName="address" id="address" required />
+                        </div>
+
+                        <div class="col-md-5">
+                            <label for="country" class="form-label">Country</label>
+                            <select class="form-select" id="country" required formControlName="country" (change)="selectionChanged($event)">
+                                <option *ngFor="let item of countries" [ngValue]="item">{{item.value}}</option>
+                            </select>
+                            <div *ngIf="country?.invalid" class="alert alert-danger">
+                                <div *ngIf="country?.errors?.['required']">
+                                    Country is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="zip" class="form-label">Zip</label>
+                            <input type="text" class="form-control" id="zip" placeholder="" required
+                                formControlName="zip">
+                        </div>
+                    </div>
+                    <div class="my-3">
+                        <label for="firstName" class="form-label">Propreties</label><br />
+                        <div class="form-check form-check-inline">
+                            <input id="credit" type="checkbox" class="form-check-input" formControlName="hasVehicle" />
+                            <label class="form-check-label" for="credit">Has Vehicle</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input id="debit" type="checkbox" class="form-check-input"
+                                formControlName="hasProperties" />
+                            <label class="form-check-label" for="debit">Has Properties</label>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="my-3">
+                        <div class="form-check">
+                            <input id="credit" type="checkbox" class="form-check-input" [value]="familyMember"
+                                (click)="onMarried($event)" />
+                            <label class="form-check-label" for="credit">Married?</label>
+                        </div>
+                        <ng-container *ngIf="familyMember" [ngTemplateOutlet]="familyMember"></ng-container>
+                    </div>
+                    <br />
+                    <div class="my-3">
+                        <div class="form-check form-check-inline">
+                            <input id="credit" type="checkbox" class="form-check-input" [value]="agreed"
+                                (click)="onAgreedChange($event)" />
+                            <label class="form-check-label" for="credit">Agreed</label>
+                        </div>
+                    </div>
+                    <button class="w-100 btn btn-primary btn-lg" type="submit" [disabled]="!agreed" (click)="register()">Register</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <br />
+    <br />
+    <br />
+
+    <app-spinner></app-spinner>
+
+    <ng-template #familyMember>
+        <div class="my-3" *ngFor="let item of user.familyMember ">
+            <div class="form-check form-check-inline">
+                <input type="text" class="form-control-plaintext" class="form-control" [value]="item">
+            </div>
+            <div class="form-check form-check-inline">
+                <button type="submit" class="btn btn-primary mb-2" (click)="onRemoveFamilyMember(item)">Remove</button>
+                &nbsp;
+            </div>
+        </div>
+        <div class="my-3">
+            <div class="form-check form-check-inline">
+                <input type="text" class="form-control-plaintext" class="form-control" [value]="newFamilyMember">
+            </div>
+            <div class="form-check form-check-inline">
+                <button type="submit" class="btn btn-primary mb-2" (click)="onAddFamilyMember()">Add</button>
+            </div>
+        </div>
+    </ng-template>

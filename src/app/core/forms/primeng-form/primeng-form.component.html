@@ -1,0 +1,54 @@
+<div class="center">
+    <form [formGroup]="userForm">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" pInputText formControlName="name" class="form-control" />
+        </div>
+        <br>
+        <div class="form-group">
+            <label>Country</label>
+            <p-dropdown [options]="countries" [filter]="true" [formControl]="userForm.controls['country']"
+                styleClass="form-control" optionLabel="name"></p-dropdown>
+        </div>
+        <br>
+        <div class="form-group">
+            <label>Date of birth</label>
+            <p-calendar formControlName="birthDay" styleClass="form-control"></p-calendar>
+        </div>
+        <br>
+        <div class="form-group">
+            <label>Gender</label>
+            <br>
+            <p-radioButton name="gender" formControlName="gender" value="1" label="Male"></p-radioButton>
+            <br>
+            <p-radioButton name="gender" formControlName="gender" value="2" label="Female"></p-radioButton>
+        </div>
+        <br>
+        <div class="form-group">
+            <label>Properties</label><br>
+            <p-checkbox [formControl]="userForm.controls['hasVehicle']" label="Property" [binary]="true">
+            </p-checkbox><br>
+            <p-checkbox [formControl]="userForm.controls['hasProperties']" label="Vehicle" [binary]="true">
+            </p-checkbox>
+        </div>
+        <br>
+        <div class="form-group">
+            <label>Phone</label>
+            <p-inputMask formControlName="phoneNumber" mask="999-99 99999" styleClass="form-control"></p-inputMask>
+        </div>
+        <br>
+        <div class="form-group">
+            <label>Salary</label><br>
+            <p-inputNumber formControlName="salary" mode="currency" currency="USD" locale="en-US"></p-inputNumber>
+        </div>
+        <br>
+        <div class="form-group">
+            <label>Education</label><br>
+            <p-multiSelect [options]="alleducations" formControlName="educations"></p-multiSelect>
+        </div>
+        <br>
+        <div class="form-group" style="float:right">
+            <button pButton type="button" label="Submit" (click)="save()"></button>
+        </div>
+    </form>
+</div>
