@@ -1,1 +1,34 @@
-<p>students-management works!</p>
+<style>
+    .center {
+        margin: auto;
+        width: 60%;
+        padding: 10px;
+    }
+
+    .font-style {
+        font-weight: bold;
+    }
+</style>
+<p>Student [{{type}}]</p>
+<div class="center">
+    <form [formGroup]="userForm">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" pInputText formControlName="name" class="form-control"  />
+        </div>
+        <br> 
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" pInputText formControlName="email" class="form-control"  />
+        </div>
+        <br> 
+        <div class="form-group">
+            <label>Date of birth</label>
+            <p-calendar formControlName="dob" styleClass="form-control"></p-calendar>
+        </div>
+        <br>
+        <div class="form-group" style="float:right">
+            <button pButton type="button" label="Save" (click)="save()"></button>
+        </div>
+    </form>
+</div>

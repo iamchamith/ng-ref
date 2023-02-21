@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { GetListResponse } from "../../infrastructure/get-list.response.model";
-import { PaginModal } from "../../infrastructure/pagin.model";
+import { PaginModel } from "../../infrastructure/pagin.model";
 import { RepositoryService } from "../../infrastructure/repository.service";
 import { StudentListModel } from "../model/student-list.model";
 import { StudentModel } from "../model/student.model";
@@ -38,7 +38,7 @@ export class StudentService {
             return data;
         });
     }
-    public get(pagin: PaginModal) {
+    public get(pagin: PaginModel) {
         this.repositoryService.get<GetListResponse<StudentListModel>>(this.studentRepositoryRoutes.getRoute, pagin).subscribe((data) => {
             return data;
         });

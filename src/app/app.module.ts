@@ -43,7 +43,10 @@ import { Child2DataComponent } from './core/dataPassing/child2/child2.component'
 
 import { RouterTestingModule } from './core/routing/routing.testing.module';
 import { ParentRouterPageComponent } from './core/routing/parent-router-page/parent-router-page.component';
- 
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { StudentService } from './typescript/student_management_system/service/student.service';
+import { RepositoryService } from './typescript/infrastructure/repository.service';
+
 
 @NgModule({
   declarations: [
@@ -87,9 +90,10 @@ import { ParentRouterPageComponent } from './core/routing/parent-router-page/par
     RadioButtonModule,
     ButtonModule,
     ToastModule,
-    RouterTestingModule
+    RouterTestingModule,
+    HttpClientModule
   ],
-  providers: [LoaderService, ConfirmationService, CarRepository, MessageService],
+  providers: [LoaderService, ConfirmationService, CarRepository, MessageService, StudentService, RepositoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
