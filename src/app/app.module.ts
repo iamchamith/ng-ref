@@ -45,8 +45,10 @@ import { RouterTestingModule } from './core/routing/routing.testing.module';
 import { ParentRouterPageComponent } from './core/routing/parent-router-page/parent-router-page.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { StudentService } from './typescript/student_management_system/service/student.service';
-import { RepositoryService } from './typescript/infrastructure/repository.service';
-
+import { RepositoryService } from './typescript/student_management_system/infrastructure/repository.service';
+import { DateTimeFormattingComponent } from './core/date-time-formatting/date-time-formatting.component';
+import { PipesComponent } from './core/pipes/pipes.component'; 
+import {DataViewModule} from 'primeng/dataview';
 
 @NgModule({
   declarations: [
@@ -69,6 +71,8 @@ import { RepositoryService } from './typescript/infrastructure/repository.servic
     Child1DataComponent,
     Child2DataComponent,
     ParentRouterPageComponent,
+    DateTimeFormattingComponent,
+    PipesComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +95,8 @@ import { RepositoryService } from './typescript/infrastructure/repository.servic
     ButtonModule,
     ToastModule,
     RouterTestingModule,
-    HttpClientModule
+    HttpClientModule,
+    DataViewModule,
   ],
   providers: [LoaderService, ConfirmationService, CarRepository, MessageService, StudentService, RepositoryService],
   bootstrap: [AppComponent]

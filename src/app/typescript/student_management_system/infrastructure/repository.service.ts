@@ -10,12 +10,12 @@ export class RepositoryService {
     private httpOptions: any = {};
     constructor(private readonly _httpClient: HttpClient, private _cookieService: CookieService) {
     }
-    public create<TIn, TOut>(route: string, item: TIn, authorization: boolean = true) {
+    public create<TIn = any, TOut = any>(route: string, item: TIn, authorization: boolean = true) {
         const url = `${this._cookieService.get('baseurl')}${route}`;
         return this._httpClient.post<TOut>(url, item, this.getHeaders(authorization))
             .pipe(catchError(this.handleError));
     }
-    public update<TIn, TOut>(route: string, item: TIn, authorization: boolean = true) {
+    public update<TIn = any, TOut = any>(route: string, item: TIn, authorization: boolean = true) {
         const url = `${this._cookieService.get('baseurl')}${route}`;
         return this._httpClient.put<TOut>(url, item, this.getHeaders(authorization))
             .pipe(catchError(this.handleError));
@@ -26,12 +26,12 @@ export class RepositoryService {
         return this._httpClient.delete(url, this.getHeaders(authorization))
             .pipe(catchError(this.handleError));
     }
-    public getById<TOut>(route: string, itemId: string, authorization: boolean = true) {
+    public getById<TOut = any>(route: string, itemId: string, authorization: boolean = true) {
         route = `${route}/${itemId}`;
         const url = `${this._cookieService.get('baseurl')}${route}`;
         return this._httpClient.get<TOut>(url, this.getHeaders(authorization))
     }
-    public get<TOut>(route: string, pagin: PaginModel, authorization: boolean = true) {
+    public get<TOut = any>(route: string, pagin: PaginModel, authorization: boolean = true) {
         const url = `${this._cookieService.get('baseurl')}${route}`;
         return this._httpClient.get<TOut>(url, this.getHeaders(authorization))
             .pipe(catchError(this.handleError));

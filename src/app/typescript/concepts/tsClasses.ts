@@ -57,6 +57,15 @@ export class FullTimeEmployee extends Employee implements ICalculateBonus {
 
 }
 
+type allownce1 = {
+    vehicle: number | null
+};
+type allownce2 = {
+    vehicle: number | null,
+    house: number | null
+};
+
+
 export interface ICalculateBonus {
     calculateBonus(precentage: number): number;
 }
@@ -72,4 +81,17 @@ type PaymentMode = "weekly" | "monthly";
 type Name = {
     firstName: string,
     lastName: string
+}
+
+class Foo {
+    myMethod(a: string): any;
+    myMethod(a: number): any;
+    myMethod(a: number, b: string): any;
+    myMethod(a: string | number, b?: string) {
+        alert(a.toString());
+    }
+
+    aaa() {
+        this.myMethod(1,'2');
+    }
 }

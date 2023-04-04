@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { GetListResponse } from "../../infrastructure/get-list.response.model";
-import { PaginModel } from "../../infrastructure/pagin.model";
-import { RepositoryService } from "../../infrastructure/repository.service";
+import { GetListResponse } from "../infrastructure/get-list.response.model";
+import { PaginModel } from "../infrastructure/pagin.model";
+import { RepositoryService } from "../infrastructure/repository.service";
 import { StudentListModel } from "../model/student-list.model";
 import { StudentModel } from "../model/student.model";
 
